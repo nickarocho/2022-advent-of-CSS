@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.outerWrapper {
+  padding: 22px;
+}
+
 .timerWrapper {
   background: radial-gradient(
     farthest-corner at 50% 35%,
@@ -13,16 +17,15 @@
   box-shadow: 0 -20px 30px var(--color-gradient-light),
     -10px 15px 20px var(--color-gradient-dark);
   font-family: "Bebas Neue";
-  border: 7px solid var(--color-red);
   border-radius: 50%;
   aspect-ratio: 1/1;
   width: 75vw;
-  max-width: 400px;
+  max-width: 500px;
   position: relative;
 }
 
 #clock {
-  font-size: clamp(16px, 20vw, 10rem);
+  font-size: clamp(16px, 20vw, 12rem);
   margin-bottom: 10%;
   text-shadow: -2px 3px 5px var(--color-gradient-dark);
 }
@@ -36,7 +39,7 @@
 }
 
 #btnStartStop {
-  font-size: clamp(0.5rem, 1vw, 1rem);
+  font-size: clamp(0.8rem, 1vw, 1rem);
   letter-spacing: 8px;
   margin-bottom: 7%;
   text-shadow: -1px 2px 2px var(--color-gradient-dark);
@@ -49,4 +52,18 @@
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
+}
+
+.base-timer__svg {
+  position: absolute;
+}
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: var(--timer-border-width);
+  stroke: var(--color-red);
 }
