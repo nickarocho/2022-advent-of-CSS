@@ -4,7 +4,7 @@
   text-align: center;
 }
 
-.outerWrapper {
+.outer_wrapper {
   padding: 22px;
 }
 
@@ -32,38 +32,100 @@
 
 #controls {
   position: absolute;
-  bottom: 10%;
+  bottom: 15%;
   left: 0;
   right: 0;
   font-family: "Montserrat";
 }
 
-#btnStartStop {
+#btn--startStop {
   font-size: clamp(0.8rem, 1vw, 1rem);
   letter-spacing: 8px;
   margin-bottom: 7%;
   text-shadow: -1px 2px 2px var(--color-gradient-dark);
 }
 
-#btnSettings {
+.settings__container {
+  position: relative;
+}
+
+.settings__container label {
   background: url(../STARTER/images/gear.svg);
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
+  cursor: pointer;
 }
 
-.base-timer__svg {
-  position: absolute;
+#checkbox--settings {
+  display: none;
 }
-.base-timer__circle {
+
+#settings__timeEntry {
+  display: none; /* hide by default */
+  justify-content: center;
+  width: 100%;
+  font-family: "Bebas Neue";
+  position: absolute;
+  top: -250px;
+  left: 0;
+  right: 0;
+  width: 75%;
+  margin: 0 auto;
+  border-radius: 10px;
+  text-align: center;
+  font-size: clamp(16px, 20vw, 12rem);
+}
+
+#settings__timeEntry input {
+  width: 40%;
+  text-align: right;
+}
+
+#settings__timeEntry input:nth-of-type(1) {
+  border-radius: 50px 0 0 50px;
+}
+
+#settings__timeEntry input:nth-of-type(2) {
+  border-radius: 0 50px 50px 0;
+}
+
+#checkbox--settings:checked + #settings__timeEntry {
+  display: flex;
+}
+
+.timer__svg {
+  position: absolute;
+  /* flips the svg horizontally to go counter-clockwise */
+  transform: scaleX(-1);
+}
+
+/* hides the center of the SVG */
+.timer__circle {
   fill: none;
   stroke: none;
 }
 
-/* The SVG path that displays the timer's progress */
-.base-timer__path-elapsed {
+/* the SVG path that displays the timer's progress */
+.timer__path-elapsed {
   stroke-width: var(--timer-border-width);
   stroke: var(--color-red);
+}
+
+.timer__path-remaining {
+  stroke: var(--color-green);
+  /* match the thickness of the original ring */
+  stroke-width: var(--timer-border-width);
+
+  /* rounds the line endings to create a seamless circle */
+  stroke-linecap: round;
+
+  /* so the animation can start at the top of the circle */
+  transform: rotate(90deg);
+  transform-origin: center;
+
+  /* 1s aligns with the speed of the countdown timer */
+  transition: 1s linear all;
 }
